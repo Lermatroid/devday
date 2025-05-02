@@ -4,6 +4,10 @@ import { RedirectToSignIn } from "@clerk/nextjs";
 import { db } from "@/db";
 import { usersTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ThemeSwitcher } from "./client";
+
 export default async function Page() {
 	const clerkUser = await currentUser();
 
@@ -30,5 +34,16 @@ export default async function Page() {
 		)[0];
 	}
 
-	return <div>{user.firstName}</div>;
+	return (
+		<main className="flex flex-col items-center justify-center h-screen w-full max-w-screen">
+			<h1 className="text-6xl font-black">Welcome</h1>
+			<p className="text-xl font-bold">Configure your experience below</p>
+			<div className="bg-popover border-primary border-2 max-w-[500px] w-full h-[300px] rounded-lg mt-5 flex flex-col items-center justify-center gap-y-5">
+				<ThemeSwitcher />
+				<Link href="/">
+					<Button>Continue</Button>
+				</Link>
+			</div>
+		</main>
+	);
 }
