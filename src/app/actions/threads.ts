@@ -19,6 +19,6 @@ export const createThread = authedAction.action(
 
 		revalidatePath("/");
 
-		return threadId;
+		return { threadId: threadId };
 	}
 );
