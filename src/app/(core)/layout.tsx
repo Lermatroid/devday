@@ -30,7 +30,7 @@ export default async function Layout({
 
 	return (
 		<main className="h-screen w-full max-w-screen flex">
-			<Sidebar />
+			<Sidebar threads={user.threads} />
 			<div className="flex-1">{children}</div>
 		</main>
 	);
