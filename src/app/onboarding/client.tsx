@@ -18,7 +18,11 @@ export function ThemeSwitcher() {
 
 	function handleThemeChange(value: string) {
 		setCookie("theme", value);
-		router.refresh();
+		if (value === "dark") {
+			document.body.classList.add("dark");
+		} else {
+			document.body.classList.remove("dark");
+		}
 	}
 
 	return (
