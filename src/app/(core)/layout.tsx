@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { usersTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { Sidebar } from "./sidebar";
 
 export default async function Layout({
 	children,
@@ -27,5 +28,10 @@ export default async function Layout({
 		return redirect("/onboarding");
 	}
 
-	return <main className="h-screen w-full max-w-screen flex"></main>;
+	return (
+		<main className="h-screen w-full max-w-screen flex">
+			<Sidebar />
+			<div className="flex-1">{children}</div>
+		</main>
+	);
 }
